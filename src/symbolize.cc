@@ -666,7 +666,7 @@ _END_GOOGLE_NAMESPACE_
 
 #include <assert.h>
 
-#include "config.h"
+//#include "config.h"
 
 _START_GOOGLE_NAMESPACE_
 
