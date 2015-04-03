@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 INCLUDE (CheckIncludeFiles)
 INCLUDE (CheckFunctionExists)
 INCLUDE (CheckSymbolExists)
-project(google-glog)
+project(glog)
 
 if(NOT HAS_MZ_GLOBAL)
     include(global.cmake)
@@ -121,15 +121,15 @@ else()
 endif()
 
 mz_add_flag(GCC -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare)
-add_library(google-glog STATIC ${SRCS} ${HDRS})
-#target_link_libraries(google-glog gflags ${GLOG_3LIBS})
-target_link_libraries(google-glog ${GLOG_3LIBS})
-set_property(TARGET google-glog PROPERTY VERSION 0.3.3)
-set_property(TARGET google-glog PROPERTY SOVERSION 0.3.3)
-mz_target_props(google-glog)
+add_library(glog STATIC ${SRCS} ${HDRS})
+#target_link_libraries(glog gflags ${GLOG_3LIBS})
+target_link_libraries(glog ${GLOG_3LIBS})
+set_property(TARGET glog PROPERTY VERSION 0.3.3)
+set_property(TARGET glog PROPERTY SOVERSION 0.3.3)
+mz_target_props(glog)
 
 if(WIN32)
-    install(TARGETS google-glog
+    install(TARGETS glog
                 LIBRARY DESTINATION lib
                 RUNTIME DESTINATION bin
                 ARCHIVE DESTINATION lib)
@@ -140,7 +140,7 @@ if(WIN32)
                 DESTINATION doc
                 PATTERN "*.svn" EXCLUDE)
 else()
-    install(TARGETS google-glog
+    install(TARGETS glog
                 LIBRARY DESTINATION lib
                 RUNTIME DESTINATION bin
                 ARCHIVE DESTINATION lib)
@@ -149,11 +149,11 @@ else()
                 PATTERN "*.svn" EXCLUDE)
     if(APPLE)
         install(DIRECTORY doc
-                DESTINATION Library/Documentation/google-glog
+                DESTINATION Library/Documentation/glog
                 PATTERN "*.svn" EXCLUDE)
     else()
         install(DIRECTORY doc
-                DESTINATION share/doc/google-glog-doc
+                DESTINATION share/doc/glog-doc
                 PATTERN "*.svn" EXCLUDE)
     endif()
 endif()
